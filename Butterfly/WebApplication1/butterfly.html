@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .choice {
+            border: 1px #9b9b9b solid;
+            background: #efefef;
+            border-radius: 6px;
+            list-style: none;
+            padding: 18px;
+            margin: 0 0 10px 0;
+        }
+
+        .divContainer {
+            list-style: none;
+            border: 2px solid #9b9b9b;
+            border-radius: 4px;
+            display: inline-block;
+            padding-bottom: 0;
+            padding: 5px 5px 5px 0px;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+            -webkit-padding-start: 5px;
+        }
+
+         .divContainerAns {
+            list-style: none;
+            border: 2px solid #9b9b9b;
+            border-radius: 4px;
+            display: inline-block;
+            padding-bottom: 0;
+            padding: 5px 5px 5px 0px;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+            -webkit-padding-start: 5px;
+            margin-top:-650px;
+            float:right;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div ng-app='TestAppModule' ng-controller='TaskController'>
+        <div ng-repeat='column in board.columns'>
+            <div class='column-title'><h1>{{ column.name }}</h1></div>
+            <div ui-multi-sortable id='firstBoard' ng-model='board' model-subset='columns[{{ $index }}].items' class='column divContainer'>
+                <div class='item choice' ng-repeat='item in column.items'><img ng-drag="true" ng-drag-data="item.img" ng-src='{{item.img}}' width='100px' height='100px' /></div>
+            </div>
+        </div>
+        
+        <div ng-drop="true" ng-drop-success="onDropComplete1($data,$event)" ng-repeat='column in droppedObjects1.columns' class='column divContainerAns'>
+            <div class='column-title'><h1>{{ column.name }}</h1></div>
+            <div ui-multi-sortable id='firstBoard' ng-model='onDragSuccess1' model-subset='columns[{{ $index }}].items'>
+                <div class='item choice' ng-repeat='item in column.items'><img ng-drag="true" ng-src='{{item.img}}' ng-drag-data="item.img"  ng-drag-success="onDragSuccess1($data,$event)" width='100px' height='100px' /></div>
+            </div>
+        </div>
+       
+
+    </div>
+</body>
+
+
+
+</html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<script src="ngDraggable.js"></script>
+
+
+    
+    <script type="text/javascript">
+
+        angular.module('TestAppModule', ['ngDraggable']).
+     controller('TaskController', function ($scope) {
+
+         $scope.droppedObjects1 = {
+             columns: [
+                          {
+                              name: 'Butterfly example :',
+                              items: [
+                            //        { img: '' },
+                            //{ img: '' },
+                            //{ img: '' },
+                            { img: '' }
+                              ]
+                          }]
+         };
+
+            //angular.module('ui.sortable').value('uiSortableConfig', {
+            //    sortable: {
+            //        connectWith: '.column',
+
+            //    }
+            //});
+
+          //  this.taskboard = angular.module('TestAppModule');
+
+
+            //$('#firstBoard').sortable({
+            //    connectWith: '#firstBoard'
+            //});
+
+            //this.TaskController = function ($scope)
+            //{
+
+                $scope.board = {
+                    columns: [
+                      {
+                          name: 'Butterfly example :',
+                          items: [
+                            { img: '/Images/egg2.png', indxID: 1 },
+                            { img: '/Images/caterpillar.png', indxID: 2 },
+                            { img: '/Images/cocoon2.png', indxID: 3 },
+                            { img: '/Images/butterfly2.png', indxID: 4 }
+
+                            // { img: '/WebApplication1/Images/egg2.png' },
+                            //{ img: '/WebApplication1/Images/caterpillar.png' },
+                            //{ img: '/WebApplication1/Images/cocoon2.png' },
+                            //{ img: '/WebApplication1/Images/butterfly2.png' }
+
+                          ]
+                      }
+                    ]
+                };
+
+                $scope.onDragSuccess1 = function (data, evt) {
+                    console.log("133", "$scope", "onDragSuccess1", "", evt);
+                    var index = $scope.droppedObjects1.columns[0].items.indexOf(data);
+                    if (index > -1) {
+                        $scope.droppedObjects1.columns[0].items.splice(index, 1);
+                    }
+                }
+
+                $scope.onDropComplete1 = function (data, evt) {
+                    var data1 = { img: data };
+                    var index = $scope.droppedObjects1.columns[0].items.indexOf(data1);
+                    if (index == -1) {
+                        
+                        $scope.droppedObjects1.columns[0].items.push(data1);
+                    }
+                }
+
+                var inArray = function (array, obj) {
+                    var index = array.indexOf(obj);
+                }
+
+     });
+
+       
+       
+    </script>
+
+

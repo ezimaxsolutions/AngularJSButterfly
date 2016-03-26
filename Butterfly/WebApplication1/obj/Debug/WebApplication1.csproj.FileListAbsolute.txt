@@ -1,0 +1,12 @@
+E:\AngularApp\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+E:\AngularApp\WebApplication1\WebApplication1\bin\WebApplication1.dll
+E:\AngularApp\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+E:\AngularApp\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\AngularApp\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+E:\AngularApp\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+E:\AngularApp\Butterfly\WebApplication1\bin\WebApplication1.dll.config
+E:\AngularApp\Butterfly\WebApplication1\bin\WebApplication1.dll
+E:\AngularApp\Butterfly\WebApplication1\bin\WebApplication1.pdb
+E:\AngularApp\Butterfly\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\AngularApp\Butterfly\WebApplication1\obj\Debug\WebApplication1.dll
+E:\AngularApp\Butterfly\WebApplication1\obj\Debug\WebApplication1.pdb
